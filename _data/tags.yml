@@ -1,0 +1,31 @@
+# Add an entry, where the key represents a slug.
+# Provide at least a `name` value and optionally `image`, `color` and `description`.
+# Markdown is enabled for `description`, however don't use more than one paragraph (enforced by `>`)
+#
+# Example:
+#
+# ~~~
+# mytag:
+#   name: My Tag
+#   description: >
+#     *My Tag* is an example of how to define a custom tag.
+# ~~~
+
+note:
+  name: Notes
+
+asr:
+  name: ASR
+  description: >
+    Automatic speech recognition and related algorithm and systems
+
+programming:
+  name: Programming
+  description: >
+    Algorithm, data structure, and programming languages
+
+linux:
+  name: Linux
+  description: >
+    Linux configuration and commands
+

@@ -1,0 +1,40 @@
+# Dependencies
+markdown:         kramdown
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+url:              https://han-xie.github.io
+
+# Set to '' in case of hosting on `http://<your-github-name>.github.io`
+baseurl:          
+
+title:            Han's Blog
+
+# Markdown enabled, however don't use more than one paragraph (enforced by `>`)
+description:      >
+    Everyone is ignorant, only on different subjects.
+    
+# The tags listed as entries in the sidebar
+sidebar_tags:     [note, asr, programming, linux]
+
+# Fallback image and color if not overwritten for tag or post
+#image:            /hydejack/public/img/nap.jpg
+#color:            '#A85641'
+
+author:
+  name:           'Han Xie'
+
+  # Setting social media usernames will add icons at the bottom of the sidebar
+  github:         han-xie
+
+disqus: han-xie
+
+kramdown:
+  input: GFM
+  math_engine: mathjax
+  math_engine_opts:
+    preview: true
+  enable_coderay: true
+
