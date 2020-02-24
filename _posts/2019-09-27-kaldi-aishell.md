@@ -35,7 +35,7 @@ tags: [asr]
 
 #### 准备lang
 - 脚本：utils/prepare_lang.sh
-- 输入：**音素是否位置相关**, dict, <SPOKEN_NOISE>
+- 输入：**音素是否位置相关**, dict, \<SPOKEN_NOISE\>
 - 输出：(1) data/local/lang: lexicon\*,  align_lexicon.txt, phone_map.txt (2) data/lang: phones, oov, topo, words.txt, L.fst
 
 #### 训练语言模型
@@ -43,7 +43,7 @@ tags: [asr]
 - 输入：data/local/train/text和data/local/dict/lexicon.txt
 - 输出：主要是data/local/lm/3gram-mincount/lm_unpruned.gz，中间有text.no_oov, word.counts, unigram.counts, word_map等
 - 其他信息
-  - 语言模型训练脚本在<kaldi_root>/tools/kaldi_lm/train_lm.sh
+  - 语言模型训练脚本在\<kaldi_root\>/tools/kaldi_lm/train_lm.sh
   - **支持的语言模型类型**有3gram, 3gram-mincount, 4gram, 4gram-mincount
   - 生成unigram.counts时有**两个小问题**: (1) 去SIL (2) count应该只+1。估计对最终结果影响不大。
   - word_map将\<s\>, \</s\>, \<SPOKEN_NOISE\>和所有词map到A, B, C, D...
