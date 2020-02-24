@@ -52,6 +52,9 @@ tags: [asr]
 - 脚本：utils/format_lm.sh
 - 输入：前面的data/lang，arpa格式语言模型，lexicon.txt
 - 输出：G.fst
+- 其他文件都是从data/lang复制过来的，包括phones.txt words.txt topo L.fst L_disambig.fst phones oov.int oov.txt
+- 这一步主要用到了arpa2fst将语言模型进行**格式转换**，并且对生成的G.fst做了一些验证，例如stochastic，有没有不输出词的路径
+
 
 [返回目录](#contents)
 
