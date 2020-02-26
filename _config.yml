@@ -29,7 +29,7 @@ author:
   # Setting social media usernames will add icons at the bottom of the sidebar
   github:         han-xie
 
-disqus: han-xie
+# disqus: han-xie
 
 kramdown:
   input: GFM

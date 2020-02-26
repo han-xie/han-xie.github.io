@@ -71,7 +71,7 @@ tags: [asr]
 - 输出：计算出的特征（可以自行指定路径）以及feats.scp（默认在data/train等文件夹里）
 - 其他信息
   - 这里可以选择是否支持VTLN：特征级声道长度归一（Feature-level Vocal Tract Length Normalization）
-  - [info]: no **segments** file exists: assuming wav.scp indexed by utterance. 这是正常的，没有给segments，可能用VTLN才会需要给(TBD)
+  - \[info\]: no **segments** file exists: assuming wav.scp indexed by utterance. 这是正常的，没有给segments，可能用VTLN才会需要给(TBD)
   - 这里可以多核并行计算，最终的feats.scp也是把多个核的合并起来的
 
 #### 计算CMVN(Cepstral Mean and Variance Normalization)：倒谱均值和方差归一化
@@ -85,7 +85,7 @@ tags: [asr]
 
 - 脚本：utils/fix_data_dir.sh
 - 输入：训练、验证和测试文件夹路径, 如data/train
-- 输出：(1) 验证了文件是按第一列排过序并且都是第一列是unique的，即```sort -k1,1 -u <$file >$file.tmp``` (2) 取了feats.scp, cmvn.scp, wav.scp, text, utt2spk等文件中都存在的交集部分
+- 输出：(1) 验证了文件是按第一列排过序并且都是第一列是unique的，即```sort -k1,1 -u``` (2) 取了feats.scp, cmvn.scp, wav.scp, text, utt2spk等文件中都存在的交集部分
 
 [返回目录](#contents)
 
@@ -109,7 +109,7 @@ tags: [asr]
 #### 1. 生成graph
 
 - 脚本：utils/mkgraph.sh
-- 输入：L.fst G.fst phones.txt words.txt $lang/phones/silence.csl $lang/phones/disambig.int $model $tree
+- 输入：L.fst G.fst phones.txt words.txt phones/silence.csl phones/disambig.int model tree
 - 输出：graph/HCLG.fst
 
 #### 2. 执行解码
@@ -182,6 +182,9 @@ tri5a | LDA | steps/train_sat.sh | steps/decode_fmllr.sh | steps/align_fmllr.sh
 [返回目录](#contents)
 
 <h2 id="nnet3"> 5. nnet3网络训练 </h2>
+
+### 提取特征：mfcc_hires
+- 脚本：local/nnet3/run_ivector_common.sh里提取了mfcc_hires特征
 
 [返回目录](#contents)
 
