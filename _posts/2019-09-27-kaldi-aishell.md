@@ -15,6 +15,17 @@ tags: [asr]
 
 <h2 id="preparation"> 1. 数据准备 </h2>
 
+数据准备分为六个步骤，所用到的脚本列表如下：
+
+步骤 | 脚本
+---|---
+1. 下载数据 | local/download_and_untar.sh
+2. 准备dict | local/aishell_prepare_dict.sh
+3. 准备语音 | local/aishell_data_prep.sh
+4. 准备lang | utils/prepare_lang.sh
+5. 训练语言模型 | local/aishell_train_lms.sh
+6. 生成语言模型fst | utils/format_lm.sh
+
 #### 下载数据
 
 - 脚本：local/download_and_untar.sh
@@ -70,6 +81,7 @@ tags: [asr]
 - 输入：(1) 训练、验证和测试文件夹路径, 如data/train（需要有wav.scp）(2) 特征配置文件: mfcc.conf和pitch.conf
 - 输出：计算出的特征（可以自行指定路径）以及feats.scp（默认在data/train等文件夹里）
 - 其他信息
+  - 特征维度为16维，用feat-to-dim可以查看
   - 这里可以选择是否支持VTLN：特征级声道长度归一（Feature-level Vocal Tract Length Normalization）
   - \[info\]: no **segments** file exists: assuming wav.scp indexed by utterance. 这是正常的，没有给segments，可能用VTLN才会需要给(TBD)
   - 这里可以多核并行计算，最终的feats.scp也是把多个核的合并起来的
@@ -183,11 +195,36 @@ tri5a | LDA | steps/train_sat.sh | steps/decode_fmllr.sh | steps/align_fmllr.sh
 
 <h2 id="nnet3"> 5. nnet3网络训练 </h2>
 
-### 提取特征：mfcc_hires
-- 脚本：local/nnet3/run_ivector_common.sh里提取了mfcc_hires特征
+### 提取特征：ivector和mfcc_hires
+
+这一步的总脚本为local/nnet3/run_ivector_common.sh，其中包含以下步骤：
+
+1. utils/data/perturb_data_dir_speed_3way.sh用于准备data/train_sp（speed-perturbed data）
+2. steps/align_fmllr.sh用于将perturbed data对齐（结果在tri5a_sp_ali）
+3. steps/make_mfcc_pitch.sh用于提取mfcc_hires特征，其配置文件为conf/mfcc_hires.conf，在用这个脚本提取mfcc_hires特征之前用utils/data/perturb_data_dir_volume.sh脚本做了volume perturbation
+4. 分离出没有pitch的mfcc_hires特征用于extract iVector：utils/data/limit_feature_dim.sh
+5. steps/online/nnet2/get_pca_transform.sh计算pca
+6. steps/online/nnet2/train_diag_ubm.sh训练diagonal UBM
+7. steps/online/nnet2/train_ivector_extractor.sh训练iVector extractor (结果放在exp/nnet3/extractor)
+8. steps/online/nnet2/extract_ivectors_online.sh用于extract iVector，对于验证集和测试集没有用speed perturbation
+
+### 训练nnet3神经网络
+
+主体脚本在local/nnet3/run_tdnn.sh里，其主要步骤如下：
+
+1. 生成神经网络配置文件：输入层为mfcc_hires特征，维度为43。输出层维度为gmm probability density function的个数。
+2. 调用steps/nnet3/train_dnn.py训练神经网络
+3. 解码验证集和测试集，解码用的graph是tri5a的graph
+
+Tips: 在local/nnet3/tuning文件夹下面还有一个run_tdnn_2a.sh脚本，其中增加了online decoding。
 
 [返回目录](#contents)
 
 <h2 id="chain"> 6. chain网络训练 </h2>
+
+- 对齐的脚本跟nnet3用得不一样，用的是align_fmllr_lats.sh，这个脚本会生成对齐的lattice
+- chain训练的时候需要自行生成tree，脚本是steps/nnet3/chain/build_tree.sh
+- 调用steps/nnet3/chain/train.py训练神经网络
+- 与nnet3不同的是这里先调用utils/mkgraph.sh生成了graph然后解码
 
 [返回目录](#contents)
