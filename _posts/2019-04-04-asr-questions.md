@@ -38,6 +38,7 @@ Ref. 张俊博的博士论文第三章
 - 隐马尔可夫模型的评价、解码和训练算法分别是前向算法，维特比算法和Baum-Welch算法。(Ref. 张俊博thesis）
 - 维特比算法是一种动态规划算法。（Ref. 张俊博thesis)
 - 一文搞懂隐马尔可夫模型: <https://www.cnblogs.com/skyme/p/4651331.html>
+- **隐马尔可夫模型的基本假设**：时间独立性假设和分段平稳假设，这与语音的动态特性之间并不匹配（Ref. 《维吾尔语三音素决策树的欠拟合调优》）
 
 ### 解码
 
@@ -47,17 +48,15 @@ Ref. 张俊博的博士论文第三章
 - 大词汇量连续语音识别中，ROVER是最早被提出的多系统联合解码方法
 - 对齐的问题？
 
+### 说话人自适应（Speaker Adapted Training, SAT）
+
 ### 盲源分离算法
 
 独立成分分析(Independent Component Analysis)是解决盲信号分离的典型方法。(Ref. 崔浩的硕士论文第三章)
-
-### 文献阅读
-
-- Supervised Sequence Labelling with RNN (Graves)
-  - Ch. 2: Supervised Learning, Supervised Pattern Classification, Supervised Sequence Labelling
-    - Pattern Classification (Recognition): Multilayer Perceptrons, Support Vector Machines.
 
 ## 3. 现有疑惑
 
 1. Lexicon也许不是那么简单的事情？(Ref. Prabhavalkar, Interspeech 2018 presentation)
 2. LDA用来降维？(A keyword search system using open source software)
+
+答：是的，先将帧特征拼接，然后用LDA降维。参考《维吾尔语三音素决策树的欠拟合调优》
