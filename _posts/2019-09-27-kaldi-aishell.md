@@ -83,7 +83,7 @@ tags: [asr]
 - 其他信息
   - 特征维度为16维，用feat-to-dim可以查看
   - 这里可以选择是否支持VTLN：特征级声道长度归一（Feature-level Vocal Tract Length Normalization）
-  - \[info\]: no **segments** file exists: assuming wav.scp indexed by utterance. 这是正常的，没有给segments，可能用VTLN才会需要给(TBD)
+  - \[info\]: no **segments** file exists: assuming wav.scp indexed by utterance. 这是正常的，segments是指定音频端点信息的文件
   - 这里可以多核并行计算，最终的feats.scp也是把多个核的合并起来的
 
 #### 计算CMVN(Cepstral Mean and Variance Normalization)：倒谱均值和方差归一化

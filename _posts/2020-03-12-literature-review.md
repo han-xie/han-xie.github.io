@@ -60,3 +60,22 @@ where `$P(s)$` is the language probability for sentence `$s$`.
 #### Why we need to use discriminative objective functions?
 
 - The standard objective function has a strong assumption. Observation at time *t* depends on the corresponding hidden state only. This is not exactly true [[Reference](https://medium.com/@jonathan_hui/speech-recognition-maximum-mutual-information-estimation-mmie-a0db565764aa)].
+
+## Weighted Finite State Transducer
+
+### Speech Recognition Algorithms Using Weighted Finite-State Transducers
+
+## Keyword Spotting
+
+### Region Proposal Network Based Small-Footprint Keyword Spotting
+
+- Authors: Jingyong Hou, Yangyang Shi, Mari Ostendorf, Mei-Yuh Hwang, Lei Xie
+- Region Proposal Network (RPN) used in keyword spotting
+- At a false alarm rate of 1/h, the authors achieved a false rejection of approximately 5% for 'Nihao Wenwen'
+- The **dominant approach** to small-footprint KWS was the keyword-filler Hidden Markov Model (HMM) [Ref. 4-8].
+- HMM state posterior?
+- **Feedforward DNNs** gave significant improvement over the HMM-DNN approach in low-footprint scenarios [Ref. 14-17].
+- Source code: <https://github.com/jingyonghou/RPN_KWS>
+- Feature extractor: GRU (after fbank)
+- Baselines: (1) Deep KWS: spliced with 15 left frames and 5 right frames (2) RNN-attention (3) end-of-keyword labelling
+- The finding that the DET curve for 'Nihao Wenwen' outperformed that for 'Hi Xiaowen' is likely because 'Nihao Wenwen' is longer (**4 syllables instead of 3 syllables**) and hence it is easier to distinguish 'Nihao Wenwen' from other non-keyword audio. **【这里提到了唤醒词的音节问题】**
