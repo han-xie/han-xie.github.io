@@ -11,6 +11,24 @@ tags: [asr]
 - Ch. 2: Supervised Learning, Supervised Pattern Classification, Supervised Sequence Labelling
   - Pattern Classification (Recognition): Multilayer Perceptrons, Support Vector Machines.
 
+### Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation (2014)
+
+- Authors: Kyunghyun Cho, Bart van Merrienboer, Caglar Gulcehre, Dzmitry Bahdanau, Fethi Bougares, Holger Schwenk, Yoshua Bengio
+- Amodei *et al.* cited this paper for **GRU** in *Deep Speech 2 : End-to-End Speech Recognition in English and Mandarin*.
+- Encoder-Decoder model
+- Objective function (maximize the conditional log-likelihood)
+
+`$$
+\max_{\boldsymbol{\theta}} \frac{1}{N} \displaystyle\sum_{n=1}^{N}
+\log {p_{\boldsymbol{\theta}} (\boldsymbol{y}_n|\boldsymbol{x}_n)},
+$$`
+where $\boldsymbol{\theta}$ is the set of the model parameters and each
+$(\boldsymbol{x}_n, \boldsymbol{y}_n)$ is an (input sequence, output sequence)
+pair from the training set.
+
+- **Gated Recurrent Units**: reset gate and update gate.
+- Some more explanation about GRU is available [here](https://zhuanlan.zhihu.com/p/32481747).
+
 ## Token Passing Model
 
 For me, I find it necessary to know how the Viterbi algorithm works in order to understand this token passing model. A good explanation in Chinese is available [here](https://www.zhihu.com/question/20136144).
