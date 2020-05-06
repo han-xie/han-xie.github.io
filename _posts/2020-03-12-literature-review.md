@@ -29,6 +29,35 @@ pair from the training set.
 - **Gated Recurrent Units**: reset gate and update gate.
 - Some more explanation about GRU is available [here](https://zhuanlan.zhihu.com/p/32481747).
 
+### Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling (2014)
+
+- Authors: Junyoung Chung, Caglar Gulcehre, KyungHyun Cho, Yoshua Bengio
+- Compare a long short-term memory unit, a gated recurrent unit, and a more traditional $\tanh$ unit
+- A **recurrent neural network (RNN)** is an extension of a conventional feedforward
+neural network, which is able to handle a variable-length sequence input.
+- Given a sequence $ \boldsymbol{x} = \left(\boldsymbol{x}_1; \boldsymbol{x}_2; · · · ; \boldsymbol{x}_T\right)$,
+the RNN updates its recurrent hidden state $\boldsymbol{h}_t$ by
+`$$
+\boldsymbol{h}_t = \left\{
+  \begin{matrix}
+    0, & t=0\\
+    \phi(\boldsymbol{h}_{t-1}, \boldsymbol{x}_t), & \text{otherwise}
+  \end{matrix}
+\right.
+$$`
+Traditionally, the function $\phi$ is implemented as
+`$$
+\boldsymbol{h}_t = g\left(
+  \boldsymbol{W}\boldsymbol{x}_t + \boldsymbol{U}\boldsymbol{h}_{t-1}
+\right),
+$$`
+where $g$ is a smooth, bounded function such as a logistic sigmoid
+function or a hyperbolic tangent function.
+- RNNs can hardly capture long-term dependencies because the gradients
+tend to either vanish (most of the time) or explode
+(rarely, but with severe effects).
+- LSTM and GRU are explained in detail in Chapter 3.
+
 ## Token Passing Model
 
 For me, I find it necessary to know how the Viterbi algorithm works in order to understand this token passing model. A good explanation in Chinese is available [here](https://www.zhihu.com/question/20136144).
