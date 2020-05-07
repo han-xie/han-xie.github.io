@@ -114,7 +114,28 @@ where `$P(s)$` is the language probability for sentence `$s$`.
 
 ## Keyword Spotting
 
-### Region Proposal Network Based Small-Footprint Keyword Spotting
+### Small-footprint keyword spotting using deep neural networks (2014)
+
+- Authors: Guoguo Chen, Carolina Parada, Georg Heigold
+- Meaning of small footprint in terms of programming explained [here](https://stackoverflow.com/questions/1618065/what-is-meaning-of-small-footprint-in-terms-of-programming).
+- A commonly used technique for keyword spotting is the Keyword/Filler Hidden Markov Model.
+- This paper proposes a **Deep KWS** system.
+- The voice-activity detector is decscribed in Ref. 14: uses PLP features and GMM model.
+- Deep KWS: 30 left-spliced frames, 10 right-spliced frames.
+- HMM baseline: **10 left-spliced frames, 5 right-spliced frames.**
+- ReLU outperforms logistic activation function in their experiments.
+- Compared the performance of four systems: HMM baseline (VS), HMM baseline (VS+KW), Deep (KW), and Deep (VS+KW).
+
+### Query-by-example keyword spotting using long short-term memory networks (2015)
+
+- Authors: Guoguo Chen, Carolina Parada, Tara N. Sainath
+- Goal: detect user-specified keywords
+- Feature extraction: use **5 future frames and 10 past frames**
+- LSTM Feat Extractor outperforms Phone LSTM + DTW, and both of them
+outperforms Phone DNN + DTW
+- **Maybe** LSTM is more robust than DNN in noisy environment?
+
+### Region Proposal Network Based Small-Footprint Keyword Spotting (2019)
 
 - Authors: Jingyong Hou, Yangyang Shi, Mari Ostendorf, Mei-Yuh Hwang, Lei Xie
 - Region Proposal Network (RPN) used in keyword spotting
@@ -126,15 +147,3 @@ where `$P(s)$` is the language probability for sentence `$s$`.
 - Feature extractor: GRU (after fbank)
 - Baselines: (1) Deep KWS: spliced with 15 left frames and 5 right frames (2) RNN-attention (3) end-of-keyword labelling
 - The finding that the DET curve for 'Nihao Wenwen' outperformed that for 'Hi Xiaowen' is likely because 'Nihao Wenwen' is longer (**4 syllables instead of 3 syllables**) and hence it is easier to distinguish 'Nihao Wenwen' from other non-keyword audio. **【这里提到了唤醒词的音节问题】**
-
-### Small-footprint keyword spotting using deep neural networks
-
-- Authors: Guoguo Chen, Carolina Parada, Georg Heigold
-- Meaning of small footprint in terms of programming explained [here](https://stackoverflow.com/questions/1618065/what-is-meaning-of-small-footprint-in-terms-of-programming).
-- A commonly used technique for keyword spotting is the Keyword/Filler Hidden Markov Model.
-- This paper proposes a **Deep KWS** system.
-- The voice-activity detector is decscribed in Ref. 14: uses PLP features and GMM model.
-- Deep KWS: 30 left-spliced frames, 10 right-spliced frames.
-- HMM baseline: **10 left-spliced frames, 5 right-spliced frames.**
-- ReLU outperforms logistic activation function in their experiments.
-- Compared the performance of four systems: HMM baseline (VS), HMM baseline (VS+KW), Deep (KW), and Deep (VS+KW).
