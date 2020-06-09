@@ -108,6 +108,13 @@ where `$P(s)$` is the language probability for sentence `$s$`.
 
 - The standard objective function has a strong assumption. Observation at time *t* depends on the corresponding hidden state only. This is not exactly true [[Reference](https://medium.com/@jonathan_hui/speech-recognition-maximum-mutual-information-estimation-mmie-a0db565764aa)].
 
+### End-to-end speech recognition using lattice-free MMI (2018)
+
+- Authors: Hossein Hadian, Hossein Sameti, Daniel Povey, Sanjeev Khudanpur
+- Popular end-to-end approaches: (1) connectionist temporal classification (2) RNN-Transducers (3) attention-based methods
+- Attention-based models have performed very well in a few tasks such as
+machine translation but, unless the training data is very large, they have not been as effective for speech recognition tasks [[Ref. 6](https://arxiv.org/abs/1508.04395)].
+
 ## Weighted Finite State Transducer
 
 ### Speech Recognition Algorithms Using Weighted Finite-State Transducers
@@ -147,3 +154,25 @@ outperforms Phone DNN + DTW
 - Feature extractor: GRU (after fbank)
 - Baselines: (1) Deep KWS: spliced with 15 left frames and 5 right frames (2) RNN-attention (3) end-of-keyword labelling
 - The finding that the DET curve for 'Nihao Wenwen' outperformed that for 'Hi Xiaowen' is likely because 'Nihao Wenwen' is longer (**4 syllables instead of 3 syllables**) and hence it is easier to distinguish 'Nihao Wenwen' from other non-keyword audio. **【这里提到了唤醒词的音节问题】**
+
+## Far-field Speech Recognition
+
+### JHU ASpIRE system: Robust LVCSR with TDNNS, iVector adaptation and RNN-LMS
+
+- Authors: Vijayaditya Peddinti, Guoguo Chen, Vimal Manohar, Tom Ko, Daniel Povey, Sanjeev Khudanpur
+- This work compared the impact of ***input contexts, volume purterbation,
+iVector adaption, using pronunciation and silence probabilities in lexicon,
+and RNN-LMs*** on speech recognition.
+- Reverberant speech is assumed to be composed of direct-path response,
+early reflections (*viz.* reflections within a delay of 50ms of the direct signal) and late reverberations (with reverberation time from 200 to 1000 ms in typical office environments).
+- **(Early reflections / Late reverberations)  can be dealt with using DNN
+architectures which operate on comparatively (short / wide) temporal contexts.**
+- Sub-sampling is explained in Sec. 2.2.1.
+- The prior term in the iVector extraction is quite important when
+applying these iVector based methods to data that is dissimilar to
+the training data.
+- They found empirically that excluding the silence from the statistics
+for iVector estimation was very helpful.
+- GMM-based VAD [[Ref. 19](https://www.sciencedirect.com/science/article/abs/pii/S0167639310001421)].
+- It worth mentioning that it is important to generate the N-best
+hypotheses with the optimal acoustic scale.
