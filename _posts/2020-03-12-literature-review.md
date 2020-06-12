@@ -157,7 +157,7 @@ outperforms Phone DNN + DTW
 
 ## Far-field Speech Recognition
 
-### JHU ASpIRE system: Robust LVCSR with TDNNS, iVector adaptation and RNN-LMS
+### JHU ASpIRE system: Robust LVCSR with TDNNS, iVector adaptation and RNN-LMS (2015)
 
 - Authors: Vijayaditya Peddinti, Guoguo Chen, Vimal Manohar, Tom Ko, Daniel Povey, Sanjeev Khudanpur
 - This work compared the impact of ***input contexts, volume purterbation,
@@ -176,3 +176,13 @@ for iVector estimation was very helpful.
 - GMM-based VAD [[Ref. 19](https://www.sciencedirect.com/science/article/abs/pii/S0167639310001421)].
 - It worth mentioning that it is important to generate the N-best
 hypotheses with the optimal acoustic scale.
+
+### Reverberation robust acoustic modeling using i-vectors with time delay neural networks (2015)
+
+- Authors: Vijayaditya Peddinti, Guoguo Chen, Daniel Povey, Sanjeev Khudanpur
+- Similar to JHU ASpIRE paper.
+- A potential drawback of the enhancement based approaches is the inevitability
+of estimation errors [[Ref. 1](https://ieeexplore.ieee.org/document/6296524)].
+- Their TDNN uses the p-norm non-linearity.
+- semi-tied covariance (STC)
+transform [[Ref. 30](https://ieeexplore.ieee.org/document/759034)]
