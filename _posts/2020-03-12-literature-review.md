@@ -155,6 +155,14 @@ outperforms Phone DNN + DTW
 - Baselines: (1) Deep KWS: spliced with 15 left frames and 5 right frames (2) RNN-attention (3) end-of-keyword labelling
 - The finding that the DET curve for 'Nihao Wenwen' outperformed that for 'Hi Xiaowen' is likely because 'Nihao Wenwen' is longer (**4 syllables instead of 3 syllables**) and hence it is easier to distinguish 'Nihao Wenwen' from other non-keyword audio. **【这里提到了唤醒词的音节问题】**
 
+### Multi-Task Learning for Voice Trigger Detection (2020)
+
+- Authors: Siddharth Sigtia, Pascal Clark, Rob Haynes, Hywel Richards, John Bridle
+- The baseline model architecture comprises an acoustic model (AM) with four bidirectional LSTM layers with 256 units each, followed by an output affine transformation + softmax layer.
+- Results in two different test are shown in the figure below:
+![FA_in_Different_Datasets](/public/img/literature/FA_in_Different_Datasets.png)
+- It is important to collect dataset in real environments in order to measure unbiased false-reject and false-alarm rates for realistic scenarios similar to customer usage. 
+
 ## Far-field Speech Recognition
 
 ### JHU ASpIRE system: Robust LVCSR with TDNNS, iVector adaptation and RNN-LMS (2015)
