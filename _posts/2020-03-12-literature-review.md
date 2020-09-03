@@ -142,6 +142,17 @@ machine translation but, unless the training data is very large, they have not b
 outperforms Phone DNN + DTW
 - **Maybe** LSTM is more robust than DNN in noisy environment?
 
+### Streaming small-footprint keyword spotting using sequence-to-sequence models (2017)
+
+- Authors: Yanzhang He, Rohit Prabhavalkar, Kanishka Rao, Wei Li, Anton Bakhtin, Ian McGraw
+- A streaming keyword spotting system using a recurrent
+neural network transducer (**RNN-T**) model was developed
+- Baseline: CTC based keyword-filler model
+- Best performance: false reject (FR) rate of 8.9% at 0.05 false alarms (FA) per hour (RNN-T phoneme with biasing)
+- Attention mechanism was used to bias the
+RNN-T system towards a specific keyword of interest
+- \<eow\> and \<eokw\> tokens can be helpful
+
 ### Region Proposal Network Based Small-Footprint Keyword Spotting (2019)
 
 - Authors: Jingyong Hou, Yangyang Shi, Mari Ostendorf, Mei-Yuh Hwang, Lei Xie
