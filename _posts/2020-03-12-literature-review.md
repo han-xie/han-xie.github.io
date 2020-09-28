@@ -58,6 +58,19 @@ tend to either vanish (most of the time) or explode
 (rarely, but with severe effects).
 - LSTM and GRU are explained in detail in Chapter 3.
 
+### A time delay neural network architecture for efficient modeling of long temporal contexts (2015)
+
+- Authors: Vijayaditya Peddinti, Daniel Povey, Sanjeev Khudanpur
+- Two types of approaches to exploit long term temporal
+contexts are **using feature representations** or **using acoustic models**.
+- Feature representations: 1. TRAPs 2. wavelet based
+multi-scale spectro-temporal representations 3. deep scattering spectra and 4. other modulation feature representations.
+- original TDNN paper [[Ref. 2](https://ieeexplore.ieee.org/document/21701)].
+- Sub-sampling: Asymmetric context windows of up
+to 16 frames in past and 9 frames in the future were explored
+in this paper. ***It was observed that further extension of context on either side was detrimental to word recognition accuracies, though the frame recognition accuracies improved*** (this
+phenomenon is widely known).
+
 ## Token Passing Model
 
 For me, I find it necessary to know how the Viterbi algorithm works in order to understand this token passing model. A good explanation in Chinese is available [here](https://www.zhihu.com/question/20136144).
@@ -172,7 +185,7 @@ RNN-T system towards a specific keyword of interest
 - The baseline model architecture comprises an acoustic model (AM) with four bidirectional LSTM layers with 256 units each, followed by an output affine transformation + softmax layer.
 - Results in two different test are shown in the figure below:
 ![FA_in_Different_Datasets](/public/img/literature/FA_in_Different_Datasets.png)
-- It is important to collect dataset in real environments in order to measure unbiased false-reject and false-alarm rates for realistic scenarios similar to customer usage. 
+- It is important to collect dataset in real environments in order to measure unbiased false-reject and false-alarm rates for realistic scenarios similar to customer usage.
 
 ## Far-field Speech Recognition
 
