@@ -223,7 +223,7 @@ table {
 td,
 th {
   padding: .25rem .5rem;
-  border: 1px solid #e5e5e5;  /* Han: background color of table border lines */
+  border: 1px solid #e5e5e5;  /* Han: the color of table border lines */
 }
 tbody tr:nth-child(odd) td,
 tbody tr:nth-child(odd) th {
