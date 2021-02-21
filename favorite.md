@@ -12,7 +12,7 @@ title: Favorites
 
 * The great gatsby
 
-> Automatice speech recognition
+> Automatic speech recognition
 
 * Josh Meyer's Blog: <http://jrmeyer.github.io>
 * 数字编程-李飞腾: <https://zhuanlan.zhihu.com/codingmath>
