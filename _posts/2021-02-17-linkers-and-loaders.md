@@ -230,7 +230,109 @@ tags: [note, programming]
 
 ## 2.3 静态链接
 
+### 空间与地址分配
+
+- 可执行文件中的代码段和数据段都是由输入的目标文件中合并而来的
+- 空间分配方案：这里的空间分配只关注于虚拟地址空间的分配
+  - 按序叠加
+  - 相似段合并（现在的链接器基本都采用这种方案）
+    - 两步链接（Two-pass Linking）法：第一步、空间与地址分配，第二步、符号解析与定位
+    - ```$ ld a.o b.o -e main -o ab```，其中
+    ```-e main```表示将main函数作为程序入口
+
+### 符号解析与重定位
+
+- 重定位表：用来保存与重定位相关的信息
+  - ```$ objdump -r a.o```可以用来查看目标文件的重定位表
+- 符号解析
+  - ```$ readelf -s a.o```可以查看目标文件的符号表
+- 指令修正方式
+  - 近址寻址或远址寻址
+  - 绝对寻址或相对寻址
+  - 寻址长度为8位、16位、32位或64位
+- COMMON块
+  - 链接器需要处理两个或两个以上弱符号类型不一致的情况
+    - 编译器和链接器都支持一种叫COMMON块的机制来解决这个问题
+  - gcc的```-fno-common```允许我们把所有未初始化的全局变量不以COMMON块的形式处理，或者使用```__attribute__```扩展
+    - ```int global __attribute__((nocommon)) var;```
+
+### C++相关问题
+
+- 重复代码消除
+  - C++编译器在很多时候会产生重复的代码：比如模板、外部内联函数和虚函数表等
+    - 模板：GCC的处理方式是将这种段命名为```.gnu.linkonce.name```，Visual C++编译器将这种段叫做COMDAT
+    - 虚函数：虑函数表（Virtual FunctionTable,一般简称为vtbl）
+    - 外部内联函数、默认构造函数、默认拷贝函数和赋值操作符也有类似问题
+  - 函数级别链接
+    - 前面的普通链接方式将没有用到的函数也一起链接了进来
+    - Visual C++和GCC都提供了函数级别链接
+    - GCC的编译选项分别是```-ffunction-sections```和```-fdata-sections```
+- 全局构造与析构
+  - “.init”段里保存着进程的初始化代码指令，在main函数执行前系统就会执行它
+  - “.fini”段里保存着进程的终止代码指令，在main函数返回后该函数就会被执行
+- C++与ABI
+  - 我们把符号修饰标准、变量内存布局、函数调用方式等这些**跟可执行代码二进制兼容性相关的内容**称为ABI（Application Binary Interface）
+  - C++一直为人诟病的一大原因是它的二进制兼容性不好
+
+### 静态库链接
+
+- 查看静态库
+  - 查看静态库包含的目标文件
+    - ```$ ar -t libc.a```
+  - 查看静态库中的函数
+    - ```$ objdump -t libc.a```
+  - 解压静态库
+    - ```$ ar -x libc.a```
+- 链接过程控制
+  - 链接过程控制一般有三种方法：(1) 命令行参数 (2) 将链接指令存放在目标文件里，比如```.drectve```段 (3) 使用链接控制脚本
+  - Visual C++的控制脚本叫做模块定义文件，扩展名一般为.def
+  - 查看ld默认的链接控制脚本
+    - ```$ ld -verbose```
+  - 使用自己写的链接控制脚本
+    - ```$ ld -T link.script```
+  - 示例：最“小”的程序
+  - ld链接脚本语法简介P.128
+
+### BFD库
+
+- BFD库（Binary File Descriptor library）希望通过统一的接口来处理不同的目标文件格式
+- ubuntu的BFD开发库在binutils-dev软件包中，可以通过apt安装
+
 ## 2.4 Windows平台的目标文件和可执行文件格式
+
+### Windows的二进制文件格式PE/COFF
+
+- Windows平台上目标文件默认为COFF格式，而可执行文件为PE格式。很多时候我们可以将它们统称为PE/COFF文件
+- PE/COFF文件中代码段一般叫```.code```，数据段一般叫```.data```，不同编译器产生的目标文件的段名不同
+- Visual C++中可以使用```#pragma```将函数或变量放到自定义段
+- Microsoft Visual C++编译环境
+  - 编译器```cl```，链接器```link```，可执行文件查看器```dumpbin```
+  - 查看目标文件结构：```dumpbin /ALL hello.obj > hello.txt```
+
+### COFF文件结构
+
+- COFF文件由文件头及后面的若干个段组成
+  - COFF文件头包括了两部分：一个是描述文件总体结构和属性的**映像头**（Image Header），另一个是描述文件中包含的段属性的**段表**（Section Table）
+  - 映像头是一个“IMAGE_FILE_HEADER”结构
+  - 段表是一个“IMAGE_SECTION_HEADER”结构
+- COFF中代码段、数据段和BSS段的内容与ELF中几乎一样
+- COFF中特有的两个段：```.drectve```段（**链接指示信息段**）和```.debug$S```段（**调试信息段**）
+  - 链接指示信息段保存的是编译器传递给链接器的命令行参数
+  - ```.debug$S```表示包含的是符号相关的调试信息段、```.debug$P```表示包含预编译头文件相关的调试信息段、```.debug$T```表示包含类型相关的调试信息段
+- COFF符号表：主要包括符号名、符号的类型、所在的位置
+
+### PE文件结构
+
+- PE文件是基于COFF的扩展，最主要的变化有两个
+  1. 文件最开始的部分不是COFF文件头，而是DOS MZ可执行文件的文件头和桩代码
+      - 这个结构主要是为了兼容DOS文件格式而设计的
+  2. 原来COFF文件头中的“IMAGE_FILE_HEADER”部分扩展成了PE文件文件头结构“IMAGE_NT_HEADERS”
+      - “IMAGE_NT_HEADERS”包含两个结构：映像头（Image Header）和PE扩展头部结构（Image Optional Header）
+      - 我们平时可以使用“IMAGE_OPTIONAL_HEADER”作为PE扩展头部结构的定义
+- 数据目录（Data Directory）
+  - 为了方便很快地找到一些装载所需要的数据结构
+  - 数据目录在“IMAGE_OPTIONAL_HEADER”结构里面是“DataDirectory”成员，这个成员是一个“IMAGE_DATA_DIRECTORY”的结构数组
+  - 数据目录中包含了导入表、资源表、异常表、重定位表、调试信息表、线程私有存储等的地址和长度
 
 <h1 id="dynamic_linking"> 第3部分 装载与动态链接 </h1>
 
