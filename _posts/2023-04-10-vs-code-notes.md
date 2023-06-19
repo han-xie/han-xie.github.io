@@ -13,7 +13,7 @@ tags: [note]
 # 插件记录
 ## Remote - SSH
 
-Remote - SSH从1.35版开始加入VS Code。
+Remote - SSH从1.35版开始加入VS Code。安装Remote - SSH后，可以很方便得使用VS Code访问远程主机上的代码仓库。
 
 > Reference: [Remote-SSH 发版记录](https://github.com/microsoft/vscode-docs/tree/main/remote-release-notes)
 
