@@ -37,3 +37,7 @@ tags: [note]
     sort -u $dir/${file/orig_sorted/new} > $dir/${file/_orig_sorted/}
   done
 ```
+
+<h3> 2.2 学习使用awk的脚本示例 </h3>
+
+我在github上保存了学习使用awk的示例脚本：[参考链接](https://github.com/han-xie/code_notes/blob/master/shell/02_awk.sh)。
