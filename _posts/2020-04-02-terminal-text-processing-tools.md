@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 【笔记】命令行文本处理工具记录
-tags: [note]
+tags: [note, linux]
 ---
 
 ## 目录
