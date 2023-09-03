@@ -39,6 +39,10 @@ tags: [linux]
 1. `dos2unix`指令与`unix2dos`指令可以用来在DOS格式和Unix格式之间转换编码
 2. `docker exec -e LANG=C.UTF-8 -it [container] bash` 使容器支持中文UTF-8
 
-# 5. 文件相关操作
+# 5. 文件和文件夹相关操作
 
 1. `split`可以用来切割文件，然后用`cat`合并到一起
+2. `basename`用于去除**路径**和**文件后缀**部分的文件名或者目录名
+3. `dirname`用于从文件路径中获取文件目录
+4. `file`用于[辨识文件类型](https://www.runoob.com/linux/linux-comm-file.html)，而且可以借助范围指定符列出以指定范围字母开头的文件的文件类型，详见[reference](https://learnku.com/server/wikis/36526)
+
