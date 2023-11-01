@@ -26,3 +26,7 @@ title: Favorites
 
 * [详解EM算法与混合高斯模型](https://blog.csdn.net/lin_limin/article/details/81048411)
 
+> Autonamous driving
+
+* AutowareClass2020: <https://gitlab.com/ApexAI/autowareclass2020>
+* Apex AI Autoware Course: <https://apex.ai/autoware-course>
