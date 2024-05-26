@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 基于LXD容器在Ubuntu 18.04系统上安装ROS2 Humble
-tags: [linux]
+tags: [tech]
 ---
 
 因为ROS2 Humble官方只支持Utunbu 22.04，因而在Ubuntu 18.04的系统上如果想要使用ROS2 Humble，需要配置容器环境。

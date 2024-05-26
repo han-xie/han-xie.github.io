@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 使用kaldi训练aishell数据集
-tags: [asr]
+tags: [tech]
 ---
 
 <h2 id="contents"> 目录 </h2>

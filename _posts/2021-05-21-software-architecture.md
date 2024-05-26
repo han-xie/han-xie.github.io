@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 软件架构设计案例分析与最佳实践
-tags: [note, programming]
+tags: [tech]
 ---
 
 主讲老师：罗贤虎

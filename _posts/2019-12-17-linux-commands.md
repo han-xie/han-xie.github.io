@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Linux命令行下的常用指令笔记
-tags: [linux]
+tags: [tech]
 ---
 
 # 1. bash变量操作

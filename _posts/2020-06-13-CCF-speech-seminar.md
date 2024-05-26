@@ -1,7 +1,7 @@
 ---
 layout: post
 title: CCF语音对话与听觉前沿研讨会
-tags: [asr]
+tags: [research]
 ---
 
 Video: <https://www.bilibili.com/video/BV1MV411k7iJ>

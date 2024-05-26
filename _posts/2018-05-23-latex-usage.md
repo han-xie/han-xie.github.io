@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 【笔记】使用LaTex撰写毕业论文
-tags: [note]
+tags: [tech]
 ---
 
 # 笔记

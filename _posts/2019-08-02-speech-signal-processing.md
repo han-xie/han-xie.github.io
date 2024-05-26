@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 【读书笔记】《语音信号处理（C++版）》
-tags: [asr]
+tags: [research]
 ---
 
 ## 目录

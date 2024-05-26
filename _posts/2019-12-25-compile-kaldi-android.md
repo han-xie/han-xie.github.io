@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Compile kaldi for Android
-tags: [asr, programming]
+tags: [tech]
 ---
 We NEED to cross compile kaldi for arm64-v8a first in order to use this project.
 Following are the instructions which have been tested in Ubuntu 18.04, 64 bits.

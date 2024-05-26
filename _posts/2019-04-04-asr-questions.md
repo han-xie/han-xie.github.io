@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 语音识别的基本问题与基本概念解析
-tags: [asr]
+tags: [research]
 ---
 
 ## 1. 语音识别的三个基本问题

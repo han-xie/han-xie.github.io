@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Notes on Android native programming
-tags: [note, programming]
+tags: [tech]
 ---
 
 ## 1. Android adb shell执行程序

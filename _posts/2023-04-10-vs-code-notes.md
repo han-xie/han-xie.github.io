@@ -1,7 +1,7 @@
 ---
 layout: post
 title: VS Code插件配置笔记
-tags: [note]
+tags: [tech]
 ---
 
 # 背景介绍

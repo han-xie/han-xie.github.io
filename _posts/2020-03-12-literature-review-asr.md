@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Literature review notes on automatic speech recognition
-tags: [asr]
+tags: [research]
 ---
 
 ## Deep Neural Network

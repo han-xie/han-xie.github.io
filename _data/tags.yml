@@ -11,21 +11,18 @@
 #     *My Tag* is an example of how to define a custom tag.
 # ~~~
 
-note:
-  name: Notes
-
-asr:
-  name: ASR
+research:
+  name: 研究方向
   description: >
-    Automatic speech recognition and related algorithm and systems
+    个人的研究方向
 
-programming:
-  name: Programming
+tech:
+  name: 技术笔记
   description: >
-    Algorithm, data structure, and programming languages
+    技术相关的笔记
 
-linux:
-  name: Linux
+publication:
+  name: 发表论文
   description: >
-    Linux configuration and commands
+    个人发表的论文
 
