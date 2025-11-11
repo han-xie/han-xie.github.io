@@ -10,12 +10,7 @@ title: Favorites
 
 > Books
 
-* The great gatsby
-
-### 社会学
-
-* 《新教伦理与资本主义精神》--[书评](https://book.douban.com/review/6479899/)
-* 周孝正--《中国社会问题分析》视频？
+- [x] The Great Gatsby
 
 > Automatic speech recognition
 
